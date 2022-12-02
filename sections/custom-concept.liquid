@@ -1,0 +1,80 @@
+<!-- コンセプト -->
+<div class="concept-lg-wrapper">
+  <section class="concept" id="concept">
+    <div class="concept-wrapper">
+      <div class="concept-box">
+        <h2 class="h2-title h2-concept">{{ section.settings.text1 }}
+        </h2>
+        <p class="h2-subtitle h2-concept ">{{ section.settings.text2 }}
+        </p>
+        <p class="concept-title">{{ section.settings.textarea1 }}
+        </p>
+        <p class="concept-subtitle">{{ section.settings.textarea2 }}
+        </p>
+        <div class="btn-common-box btn-common-box-right">
+          {% for block in section.blocks %}
+
+            <a href="{{ block.settings.button-url }}" class="btn03 pushright">
+              <span>{{ block.settings.button-text }}
+              </span>
+            </a>
+
+          {% endfor %}
+        </div>
+      </div>
+      <img src="{{ section.settings.concept-image | img_url: 'medium' }}" alt="" class="concept-img">
+
+    </div>
+  </section>
+</div>>
+
+{% schema %}
+  {
+    "name": "concept",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "concept-image",
+        "label": "コンセプト"
+      },
+      {
+        "type": "text",
+        "id": "text1",
+        "label": "タイトル"
+      },
+      {
+        "type": "text",
+        "id": "text2",
+        "label": "サブタイトル"
+      },
+      {
+        "type": "textarea",
+        "id": "textarea1",
+        "label": "サブサブタイトル"
+      }, {
+        "type": "textarea",
+        "id": "textarea2",
+        "label": "サブサブサブタイトル"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "コンセプトのブロック",
+        "type": "text",
+        "settings": [
+          {
+
+            "type": "text",
+            "id": "button-text",
+            "label": "ボタンのラベル"
+          }, {
+            "type": "url",
+            "id": "button-url",
+            "label": "ボタンのリンク"
+          }
+
+        ]
+      }
+    ]
+  }
+{% endschema %}
