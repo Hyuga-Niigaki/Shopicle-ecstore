@@ -1,0 +1,124 @@
+<div class="set-lg-wrapper">
+                <section class="set" id="set">
+                    <div class="set-lg-container">
+                        <h2 class="h2-box">
+                            {% for blocks in section.blocks %}
+                                <p class="h2-title">{{ blocks.settings.h2-title }}</p>
+                                <p class="h2-subtitle">{{ blocks.settings.h2-subtitle }}</p>
+                            {% endfor %}
+                        </h2>
+                        <div class="set-wrapper">
+                            <div class="set-wrapper-box">
+                                <p class="set-wrapper-ballon">
+                                    <img src="{{ 'img_balloon-special-lunch-set' | asset_url }} " alt="">
+                                </p>
+                                <picture class="set-wrapper-head">
+                                    <source media="(max-width: 767px)" srcset="/img/icons/img_ribbon-text_sp.png">
+                                    <img src="{{ 'img_ribbon-text.png' | asset_url }} " alt="">
+                                </picture>
+                                <div class="set-items-wrapper">
+                                    <ul class="set-items-list">
+                                            {% for blocks in section.blocks %}
+                                                <li class="set-items">
+                                                    {% if blocks.settings.saize.featured_image != blank %}
+                                                        <div class="set-items-img">
+                                                            <img widht="520px" height="520px" src="{{ blocks.settings.saize.featured_image  | img_url: '1000x' }}" alt="" class="set-item">
+                                                        </div>
+                                                    <div class="set-items-box">
+                                                        <p class="set-items-text-icon">A</p>
+                                                        <p class="set-items-text">{{ blocks.settings.saize.title }}</p>
+                                                    </div>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        {% comment %} <li class="set-items">
+                                            <div class="set-items-img">
+                                                <img src="{{ 'img_special_pasta2.png' | asset_url }} " alt="" class="set-item">
+                                            </div>
+                                            <div class="set-items-box">
+                                                <p class="set-items-text-icon">B</p>
+                                                <p class="set-items-text">テキストテキストの○○風パスタ</p>
+                                            </div>
+                                        </li>
+                                        <li class="set-items">
+                                            <div class="set-items-img">
+                                                <img src="{{ 'img_special_pasta3.png' | asset_url }} " alt="" class="set-item">
+                                            </div>
+                                            <div class="set-items-box">
+                                                <p class="set-items-text-icon">C</p>
+                                                <p class="set-items-text">テキストテキストの○○風パスタ</p>
+                                            </div>
+                                        </li>
+                                        <li class="set-items">
+                                            <div class="set-items-img">
+                                                <img src="{{ 'img_special_pasta4.png' | asset_url }} " alt="" class="set-item">
+                                            </div>
+                                            <div class="set-items-box">
+                                                <p class="set-items-text-icon">D</p>
+                                                <p class="set-items-text">テキストテキストの○○風パスタ</p>
+                                            </div>
+                                        </li> {% endcomment %}
+                                    </ul>
+                                    <div class="set-wrapper-menus">
+                                        <div class="set-wrapper-menu">
+                                            <picture class="set-wrapper-img">
+                                                <source media="(max-width: 767px)"
+                                                    srcset="/img/TOP/img_lunch-detail_sp.png">
+                                                <img src="{{ 'img_lunch-detail.png' | asset_url }} " alt="">
+                                            </picture>
+                                            <div class="set-wrapper-detail">
+                                                <p class="set-wrapper-text">スペシャルランチセット <br> 【選べる3品】</p>
+                                                <p class="set-wrapper-price">1,280 yen</p>
+                                                <p class="set-wrapper-time">(11:00 AM〜14:00 PMまで)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+{% schema %}
+    {
+        "name": "set-lg-wrapper",
+        "settings": [
+        ],
+        "blocks": [
+            {
+                "name": "h2-title",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "h2-title",
+                        "label": "タイトルを入力します"
+                    }
+                ]
+            },
+            {
+                "name": "h2-subtitle",
+                "type": "tex",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "h2-subtitle",
+                        "label": "タイトルを入力します"
+                    }
+                ]
+            },
+            {
+                "name": "lunch",
+                "type": "pasta",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "saize",
+                        "label": "商品を選択します"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
