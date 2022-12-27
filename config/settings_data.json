@@ -214,8 +214,53 @@
         "settings": {
           "color_scheme": "background-1"
         }
+      },
+      "test-header": {
+        "type": "test-header",
+        "settings": {
+          "menu": "main-menu",
+          "background-color": "#ffffff"
+        }
+      },
+      "set-lg-wrapper": {
+        "type": "set-lg-wrapper",
+        "settings": {
+        }
+      },
+      "section-grandmenu": {
+        "type": "section-grandmenu",
+        "blocks": {
+          "1dec94a4-ee21-47fb-aad1-f54723dbad22": {
+            "type": "product",
+            "settings": {
+              "title": "パスタ",
+              "menu_collection": "frontpage",
+              "number": 2
+            }
+          }
+        },
+        "block_order": [
+          "1dec94a4-ee21-47fb-aad1-f54723dbad22"
+        ],
+        "settings": {
+          "title": "GRAND MENU",
+          "sub_title": "今月のスペシャルランチセット"
+        }
+      },
+      "section-grandmenu_drink": {
+        "type": "section-grandmenu_drink",
+        "settings": {
+        }
+      },
+      "test-footer": {
+        "type": "test-footer",
+        "settings": {
+        }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {
