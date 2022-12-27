@@ -1,0 +1,131 @@
+<div class="menu-lg-wrapper">
+                <section class="menu">
+                    <h2 class="h2-title">{{ section.settings.title }}</h2>
+                    <p class="h2-subtitle">{{ section.settings.sub_title }}</p>
+                    <div class="menu-wrapper inner">
+                        {% for block in section.blocks %}
+                            <div class="menu-box">
+                                <h3 class="menu-items-title">{{ block.settings.title }}</h3>
+                                <div class="menu-wrapper-box">
+                                    <ul class="menu-wrapper-items">
+                                        {% for product in block.settings.menu_collection.products limit: block.settings.number  %}
+                                        <li class="menu-items">
+                                            <img src="{{ product.featured_image | img_url: 'master' }} " alt="#" class="menu-item">
+                                            <p class="menu-items-text">{{ product.title }}</p>
+                                            <p class="menu-items-price">{{ product.price | money }}</p>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% comment %} <div class="menu-box">
+                            <h3 class="menu-items-title">サラダ</h3>
+                            <div class="menu-wrapper-box">
+                                <ul class="menu-wrapper-items">
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_salad1.png' | asset_url }}" alt="#" class="menu-item">
+                                        <p class="menu-items-text">○○○○風サラダ</p>
+                                        <p class="menu-items-price">900 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_salad2.png' | asset_url }} " alt="#" class="menu-item">
+                                        <p class="menu-items-text">○○○○風サラダ</p>
+                                        <p class="menu-items-price">900 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_salad3.png' | asset_url }} " alt="#" class="menu-item">
+                                        <p class="menu-items-text">○○○○風サラダ</p>
+                                        <p class="menu-items-price">900 yen </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="menu-box">
+                            <h3 class="menu-items-title">パン & スイーツ</h3>
+                            <div class="menu-wrapper-box">
+                                <ul class="menu-wrapper-items">
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_sweets1.png' | asset_url }} " alt="#" class="menu-item">
+                                        <p class="menu-items-text">ホワイトマフィン</p>
+                                        <p class="menu-items-price">300 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_sweets2.png' | asset_url }}" alt="#" class="menu-item">
+                                        <p class="menu-items-text">チョコサンド</p>
+                                        <p class="menu-items-price">550 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_sweets3.png' | asset_url }}" alt="#" class="menu-item">
+                                        <p class="menu-items-text">チョコクリームサンド</p>
+                                        <p class="menu-items-price">700 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_sweets4.png' | asset_url }}" alt="#" class="menu-item">
+                                        <p class="menu-items-text">ホワイトクロ</p>
+                                        <p class="menu-items-price">400 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_sweets5.png' | asset_url }} " alt="#" class="menu-item">
+                                        <p class="menu-items-text">チョコマカロン</p>
+                                        <p class="menu-items-price">450 yen </p>
+                                    </li>
+                                    <li class="menu-items">
+                                        <img src="{{ 'img_drink.png' | asset_url }} " alt="#" class="menu-item">
+                                        <p class="menu-items-text">ストロベリークッキー</p>
+                                        <p class="menu-items-price">400 yen </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> {% endcomment %}
+{% schema %}
+{
+    "name": "メニュー選択",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "タイトルを入力します",
+            "default": "GRAND MENU"
+        },
+        {
+            "type": "text",
+            "id": "sub_title",
+            "label": "タイトルを入力します",
+            "default": "今月のスペシャルランチセット"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "商品選択",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "タイトルを入力します"
+                },
+                {
+                    "type": "collection",
+                    "id": "menu_collection",
+                    "label": "商品を選択します"
+                },
+                {
+                    "type": "range",
+                    "id": "number",
+                    "min": 1,
+                    "step": 1,
+                    "max": 6,
+                    "default": 3,
+                    "label": "商品数選択"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "メニュー選択"
+        }
+    ]
+}
+{% endschema %}
